@@ -1,0 +1,11 @@
+m=123
+x=m%10
+y=(m//10)%10
+z=m//100
+d=z
+z=y
+y=x
+x=d
+print(f"({z}{y}{x})")
+k=int(f"({z}{y}{x})")
+print(k*2)

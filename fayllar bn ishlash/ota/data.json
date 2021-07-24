@@ -1,0 +1,25 @@
+{
+    "total":
+    [
+    {
+        "id":1,
+        "name":"jonson",
+        "car": "tesla"
+    },  
+    {
+        "id":2,
+        "name":"Boris",
+        "car": "Audi"
+    },
+    {
+        "id":3,
+        "name":"Alisa",
+        "car": "Ferrari"
+    },
+    {
+        "id":4,
+        "name":"Boltavoy",
+        "car": "Nekisya"
+    }
+    ]
+}

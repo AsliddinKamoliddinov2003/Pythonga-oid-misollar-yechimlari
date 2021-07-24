@@ -1,0 +1,5 @@
+x=int(input("x  = "))
+y=int(input("y  = "))
+x1=int(input("x1  = "))
+y1=int(input("y1  = "))
+print (((x+y)%2==1 and (x1+y1)%2==1) or ((x+y)%2==0 and (x1+y1)%2==0))

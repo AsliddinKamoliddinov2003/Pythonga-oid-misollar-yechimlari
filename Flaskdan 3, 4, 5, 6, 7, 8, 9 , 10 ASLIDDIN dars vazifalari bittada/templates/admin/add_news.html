@@ -1,0 +1,57 @@
+{% extends "admin/base.html" %}
+
+{% block main %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-10 offset-1">
+            <h3>Yangilik qo'shish</h3>
+            <form action=""  method="POST" enctype="multipart/form-data">
+            <div class="input-group mb-3 mt-3">
+                <input type="text"
+                 class="form-control" 
+                 placeholder="News Title" 
+                 aria-label="News Title"
+                 aria-describedby="basic-addon1" 
+                 name="news_title"
+                 autocomplete="off"/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="form-floating">
+                    <textarea 
+                    class="form-control"
+                    placeholder="News Content"
+                    name="news_content"
+                    rows="10"
+                    cols="130"
+                    ></textarea>
+        </div>
+    </div>
+    <div class="input-group mb-3 ml-4">
+          <input 
+           class="form-check-input "
+           type="checkbox" 
+           id="publish_status"
+           name="publish_status"
+           value="True" >
+           <label for="publish_status">chop etilsin</label>
+        </div>
+        <div class="input-group mb-3 ">
+        <select class="form-select" name="category_id" required>
+            <option  disabled>Kategoriyani tanlang</option>
+            {% for kat in kategoriyalar %}
+              <option value="{{kat.id}}">{{kat.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <div  class="input-group mb-3">
+            <label class="btn btn-secondary">
+              Upload thumbnail <input type="file" name="news_photo" hidden />
+            </label>
+        </div>
+        <input type="submit" class="btn btn-outline-success" value="Create">
+        <input type="reset" class="btn btn-outline-info" value="Cancel">
+    </form>
+      </div>
+</div>
+{% endblock %}

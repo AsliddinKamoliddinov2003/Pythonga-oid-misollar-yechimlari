@@ -1,0 +1,17 @@
+A1=input("A1 = ")
+A2=input("A2 = ")
+B1=input("B1 = ")
+B2=input("B2 = ")
+C1=input("C1 = ")
+C2=input("C2 = ")
+A1=int(A1)
+A2=int(A2)
+B1=int(B1)
+B2=int(B2)
+C1=int(C1)
+C2=int(C2)
+D=(A1*B2-B1*A2)
+x=(C1*B2-C2*B1)/D
+y=(A1*C2-A2*C1)/D
+print(f"x = {x}")
+print(f"y = {y}")

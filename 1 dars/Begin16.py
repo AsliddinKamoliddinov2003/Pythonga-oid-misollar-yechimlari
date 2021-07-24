@@ -1,0 +1,6 @@
+x1=input("x1 ni kiriting = ")
+x2=input("x2 ni kiriting = ")
+x1=int(x1)
+x2=int(x2)
+L=abs(x1-x2)
+print(f"L = {L}")

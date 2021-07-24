@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="container mt-4">
+    <table class="table">
+        <thead>
+            <tr style="text-align: center;">
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Content</th>
+                <th scope="col">Category</th>
+                <th scope="col">thumbnail</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Views</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for yangilik in yangiliklar %}
+                <tr style="text-align: center;">
+                    <th scope="row">1</th>
+                    <td>{{yangilik.title}}</td>
+                    <td>{{yangilik.content}}</td>
+                    <td>{{yangilik.cat_id}}</td>
+                    <td>
+                        <img src="url_for('static',filename='uploads/images/')~yangilik.photo" class="img-thumbnail" style="width: 100px;">
+                    </td>
+                    <td>{{yangilik.datetime.strftime('%Y.%m.%d, %H:%M')}}</td>
+                    <td>{{yangilik.views}}</td>
+                    <td> 
+                        {% if yangilik.is_published  %}
+                            <a href="{{ url_for('admin_news_list_view', action='make_active',_id=yangilik.id)}}">
+                                <img src="{{ url_for('static',filename='/images/icons/active_check.svg')}}" style="width: 20px;">
+                            </a>
+                        {% else %}
+                            <a href="{{ url_for('admin_news_list_view', action='make_inactive',_id=yangilik.id)}}">
+                                <img src="{{ url_for('static',filename='/images/icons/active_check.svg')}}" style="width: 20px;">
+                            
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('admin_news_list_view')}}" class="btn btn-info btn-sm">
+                            Update
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{url_for('admin_news_list_view')}}" class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock main %}

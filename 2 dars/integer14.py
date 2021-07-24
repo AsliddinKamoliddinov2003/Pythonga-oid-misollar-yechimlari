@@ -1,0 +1,10 @@
+x=123
+a=x%10
+j=x//10
+b=j%10
+c=x//100
+d=a
+a=b
+b=c
+c=d
+print(f"o'ng tomonga surish = {c}{b}{a}")

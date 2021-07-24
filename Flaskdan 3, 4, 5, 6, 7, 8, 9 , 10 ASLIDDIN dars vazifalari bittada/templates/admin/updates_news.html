@@ -1,0 +1,79 @@
+{% extends "admin/base.html" %}
+
+{% block main %}
+<div class="container" mb-5>
+    <div class="row mt-4">
+        <div class="col-10 offset-1">
+            <h3>Yangilik Tahrirlash</h3>
+            <form action="{{ url_for('update_news_view', _id=yangilik.id) }}" method="post" enctype="multipart/form-data">
+            <div class="input-group mb-3 mt-3">
+                <input 
+                 type="text"
+                 class="form-control" 
+                 placeholder="News Title" 
+                 aria-label="News Title"
+                 aria-describedby="basic-addon1" 
+                 name="news_title"
+                 autocomplete="off"
+                 value="{{yangilik.title}}"/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="form-floating">
+                    <textarea 
+                    class="form-control"
+                    placeholder="News Content"
+                    name="news_content"
+                    rows="10"
+                    cols="130"
+                    >{{yangilik.content}}</textarea>
+        </div>
+    </div>
+    <div class="input-group mb-3 ml-4">
+          <input 
+           class="form-check-input "
+           type="checkbox" 
+           id="publish_status"
+           name="publish_status"
+           value="True"
+          {% if yangilik.is_published %}
+            checked="checked"
+          {% endif %}>
+              
+            
+           <label for="publish_status">chop etilsin</label>
+        </div>
+        <div class="input-group mb-3 ">
+        <select class="form-select" name="category_id" required>
+            <option selected disabled>Kategoriyani tanlang</option>
+            {% for kat in kategoriyalar %}
+              {% if yangilik.cat_id and yangilik.cat_id==kat.id %}
+                <option selected value="{{kat.id}}">{{kat.name}}</option>
+              {% else %}
+                <option  value="{{kat.id}}">{{kat.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+
+
+        {% if yangilik.photo %}
+        <div style="position: relative; width: 250px; margin-bottom: 25px;">
+          <img src="{{url_for('static',filename='uploads/images/' ~ yangilik.photo)}}" class="img-thumbnail" style="width: 100%; position: relative;">
+          <a href="{{url_for('update_news_view', _id=yangilik.id, action='delete-thumb')}}">
+            <img src="{{url_for('static',filename='images/icons/remove.svg')}}" style="width: 20px;position: absolute;top:10px;right: 16px;" >
+          </a>
+        </div>
+        {% else %}
+        <div  class="input-group mb-3">
+              <label class="btn btn-secondary">
+                Upload thumbnail <input type="file" accept="image/png, image/gif,image/jpeg, image/jpg" name="news_photo" hidden />
+              </label>
+        </div>
+        {% endif %}
+        <input type="submit" class="btn btn-outline-success" value="Save Changes">
+        <a href="{{url_for('admin_news_list_view')}}" class="btn btn-outline-info">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

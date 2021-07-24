@@ -1,0 +1,10 @@
+x=input("a ni  kiriting = ")
+y=input("b ni  kiriting = ")
+z=input("c ni  kiriting = ")
+x=int(x)
+y=int(y)
+z=int(z)
+V=x*y*z
+S=2*(x*y+y*z+z*x)
+print(f"V = {V}")
+print(f"S = {S}")

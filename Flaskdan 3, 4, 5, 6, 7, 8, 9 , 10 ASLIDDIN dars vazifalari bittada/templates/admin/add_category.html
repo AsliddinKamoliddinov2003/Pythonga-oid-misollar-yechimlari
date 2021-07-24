@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+
+{% block main %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-10 offset-1">
+            <h3>Add Category</h3>
+            <form action=""  method="POST" >
+            <div class="input-group mb-3 mt-3">
+                <input type="text"
+                 class="form-control" 
+                 placeholder="Enter the category" 
+                 aria-label="News Title"
+                 aria-describedby="basic-addon1" 
+                 name="category_name"
+                 autocomplete="off"/>
+            </div>
+           
+        <input type="submit" class="btn btn-outline-success" value="Create">
+        <input type="reset" class="btn btn-outline-info" value="Cancel">
+    </form>
+      </div>
+</div>
+{% endblock %}

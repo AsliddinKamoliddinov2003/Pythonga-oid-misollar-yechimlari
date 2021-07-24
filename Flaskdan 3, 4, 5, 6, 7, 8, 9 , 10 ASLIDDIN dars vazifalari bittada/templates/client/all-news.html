@@ -1,0 +1,54 @@
+{% extends "client/base.html" %}
+{% block main %}
+<div class="container p-3">
+    <a href="{{url_for('add_news_view')}}" class="btn btn-primary"> Add news </a>
+    {% if yangiliklar|length != 0 and qidirilgan_soz %}
+    <h4>Siz qidirgan so'z (<u>{{qidirilgan_soz}}</u>) bo'yicha yangiliklar:{{yangiliklar|length}}</h4>
+    {% endif %}
+    <div class="row">
+        {% if yangiliklar %}
+        {% for yangilik in yangiliklar %}
+        {% if yangilik.is_published %}
+        <div class="col-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    {% if yangilik.photo %}
+                        <img class="card-img-top"
+                        src="{{url_for('static', filename='uploads/images/') ~ yangilik.photo|safe}}" />
+                    {% else %}
+                        <img class="card-img-top"
+                        src="{{url_for('static', filename='images/Rasm_yoq.png')}}" />
+                    {% endif %}
+
+                    <h5><a href="{{url_for('single_news_view', slug=yangilik.slug) }}">{{yangilik.title|safe}}</a></h5>
+                    <p>{{yangilik.content|truncate(200)|safe}}</p>
+                    <a href="{{url_for('single_news_view',slug=yangilik.slug)}}" class="btn btn-info"
+                        style="float: right;">Batafsil</a>
+                    {% if yangilik.views %}
+                    <span class="text text-secondary">
+                        Ko'rilishlar soni: <span class="badge badge-secondary">
+                            {{yangilik.views}}
+                        </span>
+                    </span>
+                    {% endif %}
+                    {% if yangilik.datetime %}
+                    <span class="text text-secondary mr-3">
+                        Chop etildi: <span class="badge badge-secondary">
+                            {{yangilik.datetime.strftime('%Y-%m-%d ,%H:%M:%S') }}
+                        </span>
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <div class="alert alert-warning" role="alert" style="margin: auto;">
+            Bazada siz izlagan ma'lumot topilmadi !! <a href="{{url_for('all_news_view')}}"
+                class="stretched-link text-info">bosh sahifaga</a> qayting
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock main%}

@@ -1,0 +1,5 @@
+home:uy
+apple:olma
+tiger:yo'lbars
+book:kitob
+mouse:sichqon

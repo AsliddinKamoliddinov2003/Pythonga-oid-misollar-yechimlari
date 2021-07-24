@@ -1,0 +1,5 @@
+x=int(input("x  = "))
+y=int(input("y  = "))
+x1=int(input("x1  = "))
+y1=int(input("y1  = "))
+print (((abs(x1-x)>0) and (y1-y)==0) or ((abs(y1-y)>0) and (x1-x)==0) or (((x+y)%2==1) and ((x1+y1)%2==1)) or (((x+y)%2==0) and ((x1+y1)%2==0)))

@@ -1,0 +1,34 @@
+{% extends "client/base.html" %}
+
+{% block main %}
+
+  </nav>
+
+  <div class="container mt-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{ url_for('all_news_view') }}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{yangilik.title}}</li>
+    </ol>
+    <h2>{{yangilik.title}}</h2>
+    <div>
+      {% if yangilik.datetime %}
+      <span>Sana: <b>{{yangilik.datetime.strftime('%Y-%m-%d ,%H:%M:%S') }}</b></span>
+      {% endif %}
+
+      {% if yangilik.datetime and yangilik.views %}
+      <span>|</span>
+      {% endif %}
+
+      {% if yangilik.views %}
+      <span>Ko'rishlar soni: <b>{{yangilik.views}}</b></span>
+      {% endif %}
+    </div>
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+      <img src="{{url_for('static', filename='uploads/images/') ~ yangilik.photo|safe}}" style="width: 500px; object-fit: cover; margin:15px; border: 2px solid rgba(51,51,51,0.493);padding: 5px;">
+    
+    </div>
+    <p>{{yangilik.content}}</p>
+  </div>
+  {% endblock main%}
+
+  
